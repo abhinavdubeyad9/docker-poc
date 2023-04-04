@@ -1,0 +1,61 @@
+version: '3.9'
+
+services: 
+ # mongoDB Services
+  mongo_db:
+    container_name: db_container
+    image: mongo:latest
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes: 
+     - mongo_db:/data/db
+  
+  # Node API service
+  square:
+    build:
+      dockerfile: square/Dockerfile
+      context: .
+    volumes:
+      - ./square:/myapp
+    ports:
+      - 4000:3000
+    environment:
+      PORT: 3000
+      MONGODB_URI: mongodb://mongo_db:27017
+      DB_NAME: my_db
+    depends_on:
+      - mongo_db
+  
+  cube:
+    build:
+      dockerfile: cube/Dockerfile
+      context: .
+    volumes:
+      - ./cube:/myapp
+    ports:
+      - 4001:3000
+    environment:
+      PORT: 3000
+      MONGODB_URI: mongodb://mongo_db:27017
+      DB_NAME: my_db
+    depends_on:
+      - mongo_db
+  
+  fibonacci:
+    build:
+      dockerfile: fibonacci/Dockerfile
+      context: .
+    volumes:
+      - ./fibonacci:/myapp
+    ports:
+      - 4002:3000
+    environment:
+      PORT: 3000
+      MONGODB_URI: mongodb://mongo_db:27017
+      DB_NAME: my_db
+    depends_on:
+      - mongo_db
+
+volumes:
+  mongo_db: {}
