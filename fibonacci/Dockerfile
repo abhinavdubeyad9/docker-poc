@@ -6,4 +6,4 @@ COPY fibonacci/package.json .
 RUN npm install 
 EXPOSE 3000
 
-CMD ["./dev-start.sh"]
+CMD ["npm", "start"]
