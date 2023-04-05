@@ -1,11 +1,10 @@
 FROM node:alpine
 WORKDIR /usr/src/app
 
-# Install app dependencies
-# A wildcard is used to ensure both package.json AND package-lock.json are copied
-# where available (npm@5+)
-COPY . .
 
-RUN npm install
+COPY package*.json .
 
+RUN npm ci 
+
+COPY . . 
 CMD ["npm", "run"]
