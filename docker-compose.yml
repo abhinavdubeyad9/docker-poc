@@ -17,7 +17,7 @@ services:
       dockerfile: square/Dockerfile
       context: .
     volumes:
-      - ./square:/app
+      - ./square:/myapp
     ports:
       - 4000:3000
     environment:
@@ -32,7 +32,7 @@ services:
       dockerfile: cube/Dockerfile
       context: .
     volumes:
-      - ./cube:/app
+      - ./cube:/myapp
     ports:
       - 4001:3000
     environment:
@@ -47,7 +47,7 @@ services:
       dockerfile: fibonacci/Dockerfile
       context: .
     volumes:
-      - ./fibonacci:/app
+      - ./fibonacci:/myapp
     ports:
       - 4002:3000
     environment:

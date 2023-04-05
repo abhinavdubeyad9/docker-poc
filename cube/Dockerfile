@@ -1,11 +1,9 @@
 FROM node:alpine
+RUN mkdir /myapp
+WORKDIR /myapp
+RUN cd /myapp
+COPY cube/package.json .
+RUN npm install 
+EXPOSE 3000
 
-WORKDIR /usr/src/app
-
-COPY package*.json ./
-
-RUN npm install
-
-COPY . .
-
-CMD [ "node", "start" ]
+CMD ["./dev-start.sh"]
