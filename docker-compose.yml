@@ -16,10 +16,8 @@ services:
     build:
       context: square
       dockerfile: Dockerfile
-    command: npm start
     volumes: 
-      - .:/app/
-      - /app/node_modules
+      - .:/app
     ports:
       - 4000:3000
     environment:
@@ -33,10 +31,8 @@ services:
     build:
       context: cube
       dockerfile: Dockerfile
-    command: npm start
     volumes: 
-      - .:/app/
-      - /app/node_modules
+      - .:/app
     ports:
       - 4001:3000
     environment:
@@ -50,10 +46,8 @@ services:
     build:
       context: fibonacci
       dockerfile: Dockerfile
-    command: npm start
     volumes: 
-      - .:/app/
-      - /app/node_modules
+      - .:/app
     ports:
       - 4002:3000
     environment:

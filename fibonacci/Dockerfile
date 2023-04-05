@@ -1,5 +1,9 @@
 FROM node:alpine
-WORKDIR /app/
-COPY ./fibonacci/package.json /app/package.json
+RUN mkdir -p /app
+WORKDIR /app
+EXPOSE 3000
+COPY . /app
+
 RUN npm install
-COPY . .
+
+CMD ["npm", "run"]
