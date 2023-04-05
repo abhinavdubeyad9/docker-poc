@@ -6,5 +6,4 @@ COPY square/package.json .
 RUN npm install 
 EXPOSE 3000
 
-RUN npm install
-CMD ["npm", "start"]
+CMD ["./dev-start.sh"]

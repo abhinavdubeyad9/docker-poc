@@ -17,13 +17,15 @@ services:
       dockerfile: square/Dockerfile
       context: .
     volumes:
-      - ./square:/myapp
+      - .:/usr/src/app
+    container_name: square_api
     ports:
       - 4000:3000
     environment:
       PORT: 3000
       MONGODB_URI: mongodb://mongo_db:27017
       DB_NAME: my_db
+    command: bash -c /usr/src/app/dev-start.sh
     depends_on:
       - mongo_db
   
@@ -32,13 +34,15 @@ services:
       dockerfile: cube/Dockerfile
       context: .
     volumes:
-      - ./cube:/myapp
+      - .:/usr/src/app
+    container_name: cube_api
     ports:
       - 4001:3000
     environment:
       PORT: 3000
       MONGODB_URI: mongodb://mongo_db:27017
       DB_NAME: my_db
+    command: bash -c /usr/src/app/dev-start.sh
     depends_on:
       - mongo_db
   
@@ -47,13 +51,15 @@ services:
       dockerfile: fibonacci/Dockerfile
       context: .
     volumes:
-      - ./fibonacci:/myapp
+      - .:/usr/src/app
+    container_name: fibonacci_api
     ports:
       - 4002:3000
     environment:
       PORT: 3000
       MONGODB_URI: mongodb://mongo_db:27017
       DB_NAME: my_db
+    command: bash -c /usr/src/app/dev-start.sh
     depends_on:
       - mongo_db
 
