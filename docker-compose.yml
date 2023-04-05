@@ -13,6 +13,7 @@ services:
   
   # Node API service
   square:
+    container_name: square_api
     build:
       context: square
       dockerfile: Dockerfile
@@ -26,6 +27,7 @@ services:
       - mongo_db
   
   cube:
+    container_name: cube_api
     build:
       context: cube
       dockerfile: Dockerfile
@@ -39,6 +41,7 @@ services:
       - mongo_db
   
   fibonacci:
+    container_name: fibo_api
     build:
       context: fibonacci
       dockerfile: Dockerfile
@@ -52,11 +55,12 @@ services:
       - mongo_db
   
   metrics:
+    container_name: metrics_api
     build:
       context: metrics
       dockerfile: Dockerfile
     ports:
-      - 4002:3000
+      - 4003:3000
     environment:
       PORT: 3000
       MONGODB_URI: mongodb://mongo_db:27017
