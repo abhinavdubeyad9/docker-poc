@@ -16,8 +16,10 @@ services:
     build:
       dockerfile: square/Dockerfile
       context: .
-    volumes:
-      - ./square:/myapp
+    command: npm start
+    volumes: 
+      - .:/app/
+      - /app/node_modules
     ports:
       - 4000:3000
     environment:
@@ -31,8 +33,10 @@ services:
     build:
       dockerfile: cube/Dockerfile
       context: .
-    volumes:
-      - ./cube:/myapp
+    command: npm start
+    volumes: 
+      - .:/app/
+      - /app/node_modules
     ports:
       - 4001:3000
     environment:
@@ -46,8 +50,10 @@ services:
     build:
       dockerfile: fibonacci/Dockerfile
       context: .
-    volumes:
-      - ./fibonacci:/myapp
+    command: npm start
+    volumes: 
+      - .:/app/
+      - /app/node_modules
     ports:
       - 4002:3000
     environment:
