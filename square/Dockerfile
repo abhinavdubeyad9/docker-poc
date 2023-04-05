@@ -2,7 +2,7 @@ FROM node:alpine
 
 WORKDIR /usr/src/app
 
-COPY package*.json ./
+COPY square/package*.json ./
 
 RUN npm install
 

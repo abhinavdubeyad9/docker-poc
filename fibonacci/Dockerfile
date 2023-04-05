@@ -2,7 +2,7 @@ FROM node:alpine
 
 WORKDIR /usr/src/app
 
-COPY package*.json ./
+COPY fibonacci/package*.json ./
 
 RUN npm install
 
