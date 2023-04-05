@@ -14,8 +14,8 @@ services:
   # Node API service
   square:
     build:
-      dockerfile: square/Dockerfile
-      context: .
+      context: square
+      dockerfile: Dockerfile
     command: npm start
     volumes: 
       - .:/app/
@@ -31,8 +31,8 @@ services:
   
   cube:
     build:
-      dockerfile: cube/Dockerfile
-      context: .
+      context: cube
+      dockerfile: Dockerfile
     command: npm start
     volumes: 
       - .:/app/
@@ -48,8 +48,8 @@ services:
   
   fibonacci:
     build:
-      dockerfile: fibonacci/Dockerfile
-      context: .
+      context: fibonacci
+      dockerfile: Dockerfile
     command: npm start
     volumes: 
       - .:/app/
