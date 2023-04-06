@@ -59,8 +59,6 @@ services:
     stdin_open: true
     ports:
       - 4003:3000
-    network:
-      - mynetwork
     environment:
       PORT: 3000
       MONGODB_URI: mongodb://mongo_db:27017
@@ -72,7 +70,6 @@ services:
       - fibonacci
   
   client:
-    container_name: client_ui
     build:
       context: client
       dockerfile: Dockerfile
@@ -81,14 +78,9 @@ services:
     ports:
       - 4004:3000
     environment:
-      - REACT_APP_METRICS_URL: http://localhost:4003
-    network:
-      - mynetwork
+       REACT_APP_METRICS_URL: http://metrics:4003
     depends_on:
       - metrics
-
-networks:
-  mynetwork:
 
 volumes:
   mongo_db: {}
