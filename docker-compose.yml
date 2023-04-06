@@ -67,6 +67,22 @@ services:
       DB_NAME: my_db
     depends_on:
       - mongo_db
+  
+  client:
+    container_name: client_ui
+    build:
+      context: client
+      dockerfile: dockerfile
+    ports:
+      - 4004:3000
+    networks:
+      - shared-network
+    restart: unless-stopped
+    depends_on:
+      - metrics
+
+networks:
+  shared-network:
 
 volumes:
   mongo_db: {}
