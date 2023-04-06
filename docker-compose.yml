@@ -80,6 +80,8 @@ services:
       - 4004:3000
     depends_on:
       - metrics
+    links:
+      - "metrics:met"
 
 volumes:
   mongo_db: {}

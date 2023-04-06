@@ -1,7 +1,7 @@
 import axios from "axios";
 import React from "react";
 
-const baseURL = `http://metrics:4003`;
+const baseURL = process.env.REACT_APP_METRICS_URL;
 
 export default function App() {
   const [metrics, setMetrics] = React.useState(null);
