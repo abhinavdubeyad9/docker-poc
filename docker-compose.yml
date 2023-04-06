@@ -13,7 +13,6 @@ services:
   
   # Node API service
   square:
-    container_name: square_api
     build:
       context: square
       dockerfile: Dockerfile
@@ -27,7 +26,6 @@ services:
       - mongo_db
   
   cube:
-    container_name: cube_api
     build:
       context: cube
       dockerfile: Dockerfile
@@ -41,7 +39,6 @@ services:
       - mongo_db
   
   fibonacci:
-    container_name: fibo_api
     build:
       context: fibonacci
       dockerfile: Dockerfile
@@ -55,7 +52,6 @@ services:
       - mongo_db
   
   metrics:
-    container_name: metrics_api
     build:
       context: metrics
       dockerfile: Dockerfile
@@ -78,10 +74,12 @@ services:
       dockerfile: Dockerfile
     ports:
       - 4004:3000
+    environment:
+      - REACT_APP_METRICS_URL: http://metrics:4003
     depends_on:
       - metrics
     links:
-      - "metrics:met"
+      - "metrics"
 
 volumes:
   mongo_db: {}
