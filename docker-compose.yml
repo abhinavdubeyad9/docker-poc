@@ -55,8 +55,12 @@ services:
     build:
       context: metrics
       dockerfile: Dockerfile
+    tty: true
+    stdin_open: true
     ports:
       - 4003:3000
+    network:
+      - mynetwork
     environment:
       PORT: 3000
       MONGODB_URI: mongodb://mongo_db:27017
@@ -72,14 +76,19 @@ services:
     build:
       context: client
       dockerfile: Dockerfile
+    tty: true
+    stdin_open: true
     ports:
       - 4004:3000
     environment:
-      - REACT_APP_METRICS_URL: http://metrics:4003
+      - REACT_APP_METRICS_URL: http://localhost:4003
+    network:
+      - mynetwork
     depends_on:
       - metrics
-    links:
-      - "metrics"
+
+networks:
+  mynetwork:
 
 volumes:
   mongo_db: {}
