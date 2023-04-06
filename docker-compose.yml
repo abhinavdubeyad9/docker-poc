@@ -61,14 +61,15 @@ services:
       dockerfile: Dockerfile
     ports:
       - 4003:3000
-    networks:
-      - shared-network
     environment:
       PORT: 3000
       MONGODB_URI: mongodb://mongo_db:27017
       DB_NAME: my_db
     depends_on:
       - mongo_db
+      - square
+      - cube
+      - fibonacci
   
   # client:
   #   container_name: client_ui
@@ -82,8 +83,8 @@ services:
   #   depends_on:
   #     - metrics
 
-networks:
-  shared-network:
+# networks:
+#   shared-network:
 
 volumes:
   mongo_db: {}
