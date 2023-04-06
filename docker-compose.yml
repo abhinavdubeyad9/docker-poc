@@ -61,6 +61,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - 4003:3000
+    networks:
+      - shared-network
     environment:
       PORT: 3000
       MONGODB_URI: mongodb://mongo_db:27017
@@ -77,7 +79,6 @@ services:
       - 4004:3000
     networks:
       - shared-network
-    restart: unless-stopped
     depends_on:
       - metrics
 
