@@ -85,7 +85,7 @@ services:
     container_name: client_ui
     build:
       context: client
-      dockerfile: dockerfile
+      dockerfile: Dockerfile
     ports:
       - 4004:3000
     networks:
