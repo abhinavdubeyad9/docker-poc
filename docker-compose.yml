@@ -8,8 +8,6 @@ services:
     restart: always
     ports:
       - "27017:27017"
-    networks:
-      - shared-network
     volumes: 
      - mongo_db:/data/db
   
@@ -41,8 +39,6 @@ services:
       PORT: 3000
       MONGODB_URI: mongodb://mongo_db:27017
       DB_NAME: my_db
-    networks:
-      - shared-network
     depends_on:
       - mongo_db
   
@@ -57,8 +53,6 @@ services:
       PORT: 3000
       MONGODB_URI: mongodb://mongo_db:27017
       DB_NAME: my_db
-    networks:
-      - shared-network
     depends_on:
       - mongo_db
   
@@ -73,8 +67,6 @@ services:
       PORT: 3000
       MONGODB_URI: mongodb://mongo_db:27017
       DB_NAME: my_db
-    networks:
-      - shared-network
     depends_on:
       - mongo_db
       - square
@@ -88,13 +80,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - 4004:3000
-    networks:
-      - shared-network
     depends_on:
       - metrics
-
-networks:
-  shared-network:
 
 volumes:
   mongo_db: {}
