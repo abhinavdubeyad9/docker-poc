@@ -8,10 +8,12 @@ export default function App() {
   const [showMetrics, setShowMetrics] = React.useState(false);
 
   const showMetricsOnClick = async () => {
-    await axios.get(`${baseURL}/metrics`).then((response) => {
-      setMetrics(response.data);
+    // await axios.get(`${baseURL}/metrics`).then((response) => {
+    //   setMetrics(response.data);
+    // });
+    await fetch(`${baseURL}/metrics`).then((res) => {
+      setMetrics(res.data);
     });
-
     setShowMetrics(true);
   };
 
