@@ -11,7 +11,7 @@ export default function App() {
     // await axios.get(`${baseURL}/metrics`).then((response) => {
     //   setMetrics(response.data);
     // });
-    await fetch(`${baseURL}/metrics`).then((res) => {
+    await fetch(`${baseURL}/metrics`, { mode: "cors" }).then((res) => {
       setMetrics(res.data);
     });
     setShowMetrics(true);
