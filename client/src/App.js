@@ -11,9 +11,12 @@ export default function App() {
     // await axios.get(`${baseURL}/metrics`).then((response) => {
     //   setMetrics(response.data);
     // });
-    await fetch(`${baseURL}/metrics`, { mode: "cors" }).then((res) => {
-      setMetrics(res.data);
-    });
+    await fetch(`${baseURL}/metrics`, { mode: "cors" })
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+        setMetrics(res);
+      });
     setShowMetrics(true);
   };
 
