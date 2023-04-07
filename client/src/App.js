@@ -5,21 +5,31 @@ const baseURL = process.env.REACT_APP_METRICS_URL;
 
 export default function App() {
   const [metrics, setMetrics] = React.useState(null);
+  const [showMetrics, setShowMetrics] = React.useState(false);
 
-  React.useEffect(() => {
-    axios.get(`${baseURL}/metrics`).then((response) => {
+  const showMetricsOnClick = async () => {
+    await axios.get(`${baseURL}/metrics`).then((response) => {
       setMetrics(response.data);
     });
-  }, []);
 
-  if (!metrics) return "Hello World";
+    setShowMetrics(true);
+  };
+
+  const Performance = () => {
+    return (
+      <div>
+        <h1>Performance</h1>
+        <h2>Square : {metrics.square}</h2>
+        <h2>Cube : {metrics.cube}</h2>
+        <h2>Fibonacci : {metrics.fibonnaci}</h2>
+      </div>
+    );
+  };
 
   return (
     <div>
-      <h1>Performance</h1>
-      <h2>Square : {metrics.square}</h2>
-      <h2>Cube : {metrics.cube}</h2>
-      <h2>Fibonacci : {metrics.fibonnaci}</h2>
+      <button onClick={showMetricsOnClick}>Show metrics</button>
+      {showMetrics && <Performance />}
     </div>
   );
 }
