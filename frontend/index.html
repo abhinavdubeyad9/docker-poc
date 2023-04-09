@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>calculator</title>
+  </head>
+  <body>
+    <h1>Weclome to calculator app</h1>
+    <button id="get-metrics">Show metrics</button>
+    <script>
+      const getMetricsBtn = document.getElementById("get-metrics");
+      const loadMetrics = () => {
+        const metricsURL = "http://metrics:3000/metrics";
+        fetch(metricsURL)
+          .then((res) => res.json())
+          .then((jsonRes) => {
+            console.log(jsonRes);
+          });
+      };
+
+      getMetricsBtn.addEventListener("click", () => {
+        loadMetrics();
+      });
+    </script>
+  </body>
+</html>

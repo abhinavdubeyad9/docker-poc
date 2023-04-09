@@ -10,6 +10,7 @@ const PORT = process.env.PORT || 5001;
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
+app.options("*", cors());
 
 mongoose
   .connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
