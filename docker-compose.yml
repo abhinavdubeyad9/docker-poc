@@ -81,15 +81,7 @@ services:
        REACT_APP_METRICS_URL: http://metrics:3000
     depends_on:
       - metrics
-  
-  frontend:
-    build: 
-     context: frontend
-     dockerfile: Dockerfile
-    ports:
-      - 4005:80
-    depends_on:
-      - metrics
+
   curl-service:
     image: curlimages/curl
     command: sleep 3600  
