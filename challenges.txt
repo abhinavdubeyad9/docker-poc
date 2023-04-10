@@ -1,0 +1,1 @@
+Facing issue while connecting client to the microservices.I am using http://service:port to call the microservice but my client is not able to read it. I tried the same thing with curl it was working. I was stuck, I tried all the possible things that were out there on the internt. Sincere aplogies for not being able to complete the assignment on time. 
